@@ -1,0 +1,16 @@
+{
+  "name": "HBTU Manch",
+  "short_name": "Manch",
+  "description": "HBTU's unified campus engagement platform — clubs, events, orientations, and open calls.",
+  "start_url": "./index.html",
+  "display": "standalone",
+  "background_color": "#FBF9F5",
+  "theme_color": "#C2410C",
+  "orientation": "portrait-primary",
+  "icons": [
+    { "src": "icons/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "icons/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ],
+  "categories": ["education", "productivity"],
+  "lang": "en-IN"
+}

@@ -1,0 +1,139 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="theme-color" content="#C2410C" />
+  <meta name="description" content="HBTU Manch — Campus engagement platform for Harcourt Butler Technical University, Kanpur" />
+  <title>HBTU Manch</title>
+
+  <link rel="manifest" href="manifest.json" />
+  <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+
+  <!-- Google Fonts -->
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link
+    href="https://fonts.googleapis.com/css2?family=Fraunces:ital,opsz,wght@1,9..144,400;1,9..144,700;1,9..144,900&family=Plus+Jakarta+Sans:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500&display=swap"
+    rel="stylesheet"
+  />
+
+  <link rel="stylesheet" href="styles.css" />
+</head>
+<body>
+
+  <!-- ═══════════════════════════════════════════════
+       TOP BAR
+  ════════════════════════════════════════════════ -->
+  <header id="topbar" role="banner">
+
+    <!-- Logo -->
+    <div class="topbar-logo">
+      <span class="logo-wordmark">Manch</span>
+      <span class="logo-institute">HBTU</span>
+    </div>
+
+    <!-- Role Switcher (center) -->
+    <div class="role-switcher" role="group" aria-label="Switch role">
+      <button
+        class="role-btn active"
+        data-role="student"
+        type="button"
+        aria-pressed="true"
+      >Student</button>
+
+      <div class="role-btn-group">
+        <button
+          class="role-btn"
+          data-role="clubhead"
+          type="button"
+          aria-pressed="false"
+        >Club Head</button>
+        <!-- Club selector — visible only when Club Head is active -->
+        <select id="club-head-select" aria-label="Select club" hidden>
+          <option value="robotics">Robotics Club</option>
+          <option value="coding">Coding Club</option>
+          <option value="design">Design Studio</option>
+          <option value="media">Media &amp; Photography Club</option>
+          <option value="entrepreneurship">Entrepreneurship Cell</option>
+          <option value="nss">NSS Unit</option>
+          <option value="music">Music Society</option>
+          <option value="quiz">Quiz Club</option>
+        </select>
+      </div>
+
+      <button
+        class="role-btn"
+        data-role="admin"
+        type="button"
+        aria-pressed="false"
+      >Admin</button>
+    </div>
+
+    <!-- Actions -->
+    <div class="topbar-actions">
+      <button id="btn-reset" type="button" class="btn-ghost btn-sm">
+        Reset Demo Data
+      </button>
+    </div>
+
+  </header>
+
+  <!-- ═══════════════════════════════════════════════
+       APP SHELL
+  ════════════════════════════════════════════════ -->
+  <div id="app-shell">
+
+    <!-- Sidebar -->
+    <aside id="sidebar" aria-label="Main navigation">
+      <nav id="sidebar-nav">
+        <ul id="nav-list" role="list"></ul>
+      </nav>
+    </aside>
+
+    <!-- Main content -->
+    <main id="main-content" role="main" aria-live="polite" aria-atomic="true">
+      <div id="view-container"></div>
+    </main>
+
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       MODAL
+  ════════════════════════════════════════════════ -->
+  <div
+    id="modal-overlay"
+    role="dialog"
+    aria-modal="true"
+    aria-labelledby="modal-title"
+    hidden
+  >
+    <div id="modal-box">
+      <button id="modal-close" type="button" aria-label="Close dialog">✕</button>
+      <div id="modal-body"></div>
+    </div>
+  </div>
+
+  <!-- ═══════════════════════════════════════════════
+       TOAST
+  ════════════════════════════════════════════════ -->
+  <div id="toast" role="status" aria-live="polite" hidden>
+    <span id="toast-message"></span>
+  </div>
+
+  <!-- App JS (deferred) -->
+  <script src="app.js" defer></script>
+
+  <!-- Service Worker registration -->
+  <script>
+    if ('serviceWorker' in navigator) {
+      window.addEventListener('load', () => {
+        navigator.serviceWorker.register('sw.js').catch(() => {
+          // SW not critical — silently ignore in dev
+        });
+      });
+    }
+  </script>
+
+</body>
+</html>
